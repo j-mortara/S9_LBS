@@ -54,13 +54,6 @@ class LocationAspect {
 	}
 }
 
-@Aspect(className=SensorType)
-class SensorTypeAspect {
-	def void printInfo(){
-		println("SensorTypeAspect");
-	}
-}
-
 @Aspect(className=Rule)
 class RuleAspect {
 	
