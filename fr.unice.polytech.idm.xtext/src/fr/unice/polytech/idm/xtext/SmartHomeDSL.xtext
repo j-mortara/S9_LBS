@@ -23,7 +23,7 @@ Location returns Location:
 
 SensorType returns SensorType:
     {SensorType}
-    (name=EString)?;
+    name=EString '('valueType=ValueType')';
 
 EString returns ecore::EString:
     STRING | ID;
@@ -41,18 +41,17 @@ EInt returns ecore::EInt:
 	INT;
 
 enum Operator: 
-	EQUALS='='|INFERIOR='<'|SUPERIOR='>'
-;
+	EQUALS='='|INFERIOR='<'|SUPERIOR='>';
 
 enum DurationUnit:
-	MINUTE='min'|SECOND='s'
-;
+	MINUTE='min'|SECOND='s';
+
+enum ValueType:
+	BOOL_VALUE="bool"|INT_VALUE="int";
 
 Duration returns Duration:
-	 value=EInt unit=DurationUnit
-;
+	 value=EInt unit=DurationUnit;
 
 Event returns Event:
-	description=EString 
-;
+	description=EString ;
 

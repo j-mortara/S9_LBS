@@ -18,6 +18,10 @@
       <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//DurationUnit/MINUTE"/>
       <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//DurationUnit/SECOND"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//ValueType">
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//ValueType/INT_VALUE"/>
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//ValueType/BOOL_VALUE"/>
+    </genEnums>
     <genClasses ecoreClass="smartHome.ecore#//Sensor">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//Sensor/sensorType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Sensor/dataFile"/>
@@ -30,6 +34,7 @@
     </genClasses>
     <genClasses ecoreClass="smartHome.ecore#//SensorType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//SensorType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//SensorType/valueType"/>
     </genClasses>
     <genClasses ecoreClass="smartHome.ecore#//SmartHome">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smartHome.ecore#//SmartHome/locations"/>
