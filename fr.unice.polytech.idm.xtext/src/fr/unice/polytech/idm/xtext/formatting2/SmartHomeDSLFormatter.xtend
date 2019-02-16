@@ -22,6 +22,9 @@ class SmartHomeDSLFormatter extends AbstractFormatter2 {
 		for (location : smartHome.locations) {
 			location.format
 		}
+		for (rule : smartHome.rules) {
+			rule.format
+		}
 	}
 
 	def dispatch void format(Location location, extension IFormattableDocument document) {
@@ -31,5 +34,5 @@ class SmartHomeDSLFormatter extends AbstractFormatter2 {
 		}
 	}
 	
-	// TODO: implement for 
+	// TODO: implement for Rule
 }

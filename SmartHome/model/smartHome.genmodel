@@ -9,32 +9,38 @@
   <foreignModel>smartHome.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="SmartHome" disposableProviderFactory="true" ecorePackage="smartHome.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//Operator">
-      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//Operator/INFERIOR"/>
-      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//Operator/SUPERIOR"/>
-      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//Operator/EQUALS"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//IntegerOperator">
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//IntegerOperator/INFERIOR"/>
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//IntegerOperator/SUPERIOR"/>
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//IntegerOperator/EQUALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//BooleanOperator">
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//BooleanOperator/IS"/>
+      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//BooleanOperator/IS_NOT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//DurationUnit">
       <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//DurationUnit/MINUTE"/>
       <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//DurationUnit/SECOND"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="smartHome.ecore#//ValueType">
-      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//ValueType/INT_VALUE"/>
-      <genEnumLiterals ecoreEnumLiteral="smartHome.ecore#//ValueType/BOOL_VALUE"/>
-    </genEnums>
     <genClasses ecoreClass="smartHome.ecore#//Sensor">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//Sensor/sensorType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Sensor/dataFile"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Sensor/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Sensor/value"/>
     </genClasses>
-    <genClasses ecoreClass="smartHome.ecore#//Location">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Location/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//Location/sensors"/>
+    <genClasses ecoreClass="smartHome.ecore#//IntegerSensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//IntegerSensor/value"/>
+    </genClasses>
+    <genClasses ecoreClass="smartHome.ecore#//BooleanSensor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//BooleanSensor/value"/>
     </genClasses>
     <genClasses ecoreClass="smartHome.ecore#//SensorType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//SensorType/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//SensorType/valueType"/>
+    </genClasses>
+    <genClasses ecoreClass="smartHome.ecore#//IntegerSensorType"/>
+    <genClasses ecoreClass="smartHome.ecore#//BooleanSensorType"/>
+    <genClasses ecoreClass="smartHome.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Location/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//Location/sensors"/>
     </genClasses>
     <genClasses ecoreClass="smartHome.ecore#//SmartHome">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smartHome.ecore#//SmartHome/locations"/>
@@ -46,10 +52,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smartHome.ecore#//Rule/event"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference smartHome.ecore#//Rule/duration"/>
     </genClasses>
-    <genClasses ecoreClass="smartHome.ecore#//Condition">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//Condition/sensor"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Condition/operand"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Condition/operator"/>
+    <genClasses ecoreClass="smartHome.ecore#//Condition"/>
+    <genClasses ecoreClass="smartHome.ecore#//IntegerCondition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//IntegerCondition/sensor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//IntegerCondition/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//IntegerCondition/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="smartHome.ecore#//BooleanCondition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference smartHome.ecore#//BooleanCondition/sensor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//BooleanCondition/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//BooleanCondition/operator"/>
     </genClasses>
     <genClasses ecoreClass="smartHome.ecore#//Duration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Duration/unit"/>
@@ -58,6 +70,5 @@
     <genClasses ecoreClass="smartHome.ecore#//Event">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute smartHome.ecore#//Event/description"/>
     </genClasses>
-    <genClasses ecoreClass="smartHome.ecore#//SensorValue"/>
   </genPackages>
 </genmodel:GenModel>

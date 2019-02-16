@@ -1,4 +1,4 @@
-module fr.unice.polytech.idm.xtext.GenerateSmartHomeDSL
+module fr.unice.polytech.idm.xtext.GenerateSmartHomeDsl
 
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
@@ -30,7 +30,7 @@ Workflow {
 			}
 		}
 		language = StandardLanguage {
-			name = "fr.unice.polytech.idm.xtext.SmartHomeDSL"
+			name = "fr.unice.polytech.idm.xtext.SmartHomeDsl"
 			fileExtensions = "shdsl"
 			referencedResource = "platform:/resource/SmartHome/model/smartHome.genmodel"
 			
