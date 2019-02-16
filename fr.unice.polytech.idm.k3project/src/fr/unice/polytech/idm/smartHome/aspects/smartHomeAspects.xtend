@@ -33,13 +33,9 @@ class SensorAspect {
 		_self.currentSt = _self.br.readLine();
 		_self.nextSt = _self.br.readLine();
 		_self.value = Integer.parseInt(_self.currentSt.split(" ").get(1));
-//		println(_self.value);
 	}
 	@Step
 	def void sensorStep(int currentStep){
-//		println("OK")
-//		println(_self.name + " current "+ _self.currentSt);
-//		println(_self.name + " next "+ _self.nextSt);
 		if(_self.nextSt !== null){
 			if(Integer.parseInt(_self.nextSt.split(" ").get(0)).equals(currentStep)){		
 				_self.currentSt = _self.nextSt;				
@@ -68,10 +64,10 @@ class SensorTypeAspect {
 @Aspect(className=Rule)
 class RuleAspect {
 	
-	var int timeTrue; 
+	var int timeTrue = 0; 
 	
 	@Step
-	def void evaluateRule(){
+	def boolean evaluateRule(){
 		var boolean ruleRespected = _self.conditions.stream.allMatch[evaluate() == true];
 		if(ruleRespected){
 			_self.timeTrue = _self.timeTrue + 1;
@@ -79,8 +75,10 @@ class RuleAspect {
 			_self.timeTrue = 0;
 		}
 		if(_self.timeTrue >= _self.duration.value){
-			_self.triggerEvent();
+//			_self.triggerEvent();
+			return true;
 		}
+		return false;
 	}
 	
 	@Step
@@ -134,7 +132,7 @@ class SmartHomeAspect {
 				}				
 			}
 			for(Rule rule : _self.rules){
-				rule.evaluateRule();
+				println("Rule " + rule.event.description + " value : "+ rule.evaluateRule());
 			}
 			_self.time = _self.time + 1;			
 		}
